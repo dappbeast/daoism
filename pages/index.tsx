@@ -1,3 +1,3 @@
 export default function Onboarding() {
-  return <p>DAO dashboard</p>;
+  return <p>Onboarding page</p>;
 }
