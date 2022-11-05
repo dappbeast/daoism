@@ -8,6 +8,14 @@ import { mode, StyleFunctionProps } from "@chakra-ui/theme-tools";
 
 const switchColorScheme = "#06BEE1";
 
+const styles = {
+  global: (props: StyleFunctionProps) => ({
+    body: {
+      bg:"#000000",
+    },
+  }),
+};
+
 export const contentWidth = '1032px';
 
 export const space = {
@@ -140,6 +148,7 @@ export const theme = extendTheme({
   colors,
   layerStyles,
   //   config,
+  styles,
   radii,
   space,
   components,

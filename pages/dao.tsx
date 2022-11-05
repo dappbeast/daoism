@@ -1,3 +1,5 @@
+import { Text } from "@chakra-ui/react";
+
 export default function DAO() {
-  return <p>DAO dashboard</p>;
+  return <Text color={"white"}>DAO dashboard</Text>;
 }

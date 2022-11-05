@@ -3,14 +3,17 @@ import { Flex, HStack, Heading, Text } from "@chakra-ui/react";
 const Nav = () => {
   const navBarElements = [
     {
-      label: "kim",
+      label: "Get Started",
       //  path: "/landing-page",
       //  icon: <Search2Icon />,
     },
     {
-      label: "pepe",
+      label: "Github",
       //  path: "/main-page",
       //  icon: <CalendarIcon />,
+    },
+    {
+      label: "Docs",
     },
     {
       label: "Connect Wallet",
@@ -22,9 +25,9 @@ const Nav = () => {
       justifyContent={"space-between"}
       w={"100%"}
       py={8}
-      px={80}
+      px={40}
     >
-      <Text>Logo Placeholder</Text>
+      <Text color={"white"}>Logo Placeholder</Text>
       <HStack
         spacing={20}
         pr={8}
@@ -33,7 +36,7 @@ const Nav = () => {
       >
         {navBarElements.map((element) => (
           <HStack key={element.label} spacing={3} alignItems={"center"}>
-            <Heading color={"primary"} fontSize={"lg"}>
+            <Heading color={"white"} fontSize={"lg"}>
               {element.label}
             </Heading>
             {/*{element.icon}*/}

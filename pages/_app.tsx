@@ -6,12 +6,12 @@ import Nav from "./Nav";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <Nav />
       <Flex
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
       >
+        <Nav />
         <Component {...pageProps} />
       </Flex>
     </ChakraProvider>

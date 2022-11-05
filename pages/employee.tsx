@@ -1,3 +1,5 @@
-export default function DAO() {
-  return <p>Employee dashboard</p>;
+import { Text } from "@chakra-ui/react";
+
+export default function Employee() {
+  return <Text color={"white"}>Employee dashboard</Text>;
 }
