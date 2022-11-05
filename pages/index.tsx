@@ -1,3 +1,6 @@
+import { Text } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+
 export default function Onboarding() {
-  return <p>Onboarding page</p>;
+  return <Button>hello</Button>;
 }
