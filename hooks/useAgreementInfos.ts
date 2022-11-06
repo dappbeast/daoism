@@ -4,6 +4,7 @@ import { useContractRead } from "wagmi";
 import { WORK_AGREEMENT_ADDRESS } from "../constants/contracts";
 import { AgreementInfo, AgreementState, Role } from "../constants/types";
 import WORK_AGREEMENT_ABI from "../constants/WorkAgreement.json";
+import checkSalary from "../utils/checkSalary";
 import coerce from "../utils/coerce";
 
 type Data = {
@@ -47,7 +48,6 @@ export default function useAgreementInfos(): {
     salaryHash: data.salaryHash,
   })) ?? []) as AgreementInfo[];
 
-  console.log(data);
   return {
     data,
     isLoading,
