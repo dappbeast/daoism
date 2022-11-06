@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useAccount } from "wagmi";
 import useAgreement from "../../hooks/useAgreement";
 
 export default function AgreementPage() {
@@ -6,6 +7,8 @@ export default function AgreementPage() {
   const agreementId = parseInt(query.agreementId?.toString() ?? "");
 
   const { data: agreement, isLoading, error } = useAgreement(agreementId);
+
+  const { address } = useAccount();
 
   if (isLoading) {
     return <p>Loading...</p>;
