@@ -58,7 +58,7 @@ const AgreementTable = ({
           </Text>
 
           <HStack>
-            <FormControl display="flex" alignItems="center">
+            {/*<FormControl display="flex" alignItems="center">
               <FormLabel
                 fontWeight={600}
                 color={"white"}
@@ -67,8 +67,8 @@ const AgreementTable = ({
               >
                 Reveal Values
               </FormLabel>
-              {/*<Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />*/}
-            </FormControl>
+              <Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />
+            </FormControl>*/}
 
             <Button
               px={8}
