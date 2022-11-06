@@ -11,6 +11,12 @@ import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
 import NoSSR from "../components/NoSSR";
+import { useEffect } from "react";
+import {
+  LOCAL_STORAGE_AGREEMENT_MAPPING_KEY,
+  LOCAL_STORAGE_PASSWORD_MAPPING_KEY,
+} from "../constants/localStorage";
+import { ADDRESS_SEEDS, SALARY_SEEDS } from "../constants/seed";
 
 const { chains, provider } = configureChains(
   [chain.optimismGoerli],
@@ -32,6 +38,28 @@ const wagmiClient = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    const localStoragePassword = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_PASSWORD_MAPPING_KEY) ?? ""
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_PASSWORD_MAPPING_KEY,
+      JSON.stringify({
+        ...localStoragePassword,
+        ...ADDRESS_SEEDS,
+      })
+    );
+    const localStorageAgreement = JSON.parse(
+      localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? ""
+    );
+    localStorage.setItem(
+      LOCAL_STORAGE_AGREEMENT_MAPPING_KEY,
+      JSON.stringify({
+        ...localStorageAgreement,
+        ...SALARY_SEEDS,
+      })
+    );
+  }, []);
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
