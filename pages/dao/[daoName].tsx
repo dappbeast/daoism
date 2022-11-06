@@ -32,6 +32,7 @@ export default function DAOPage() {
     //</div>
     <VStack
       mt={20}
+      mb={60}
       w={"1130px"}
       justifyContent={"center"}
       alignItems={"flex-start"}
@@ -50,10 +51,6 @@ export default function DAOPage() {
         alignItems={"flex-start"}
         spacing={5}
       >
-        {/*<Heading as={"h3"} size={"md"} color={"white"}>
-          Agreements
-        </Heading>*/}
-
         <AgreementTable title={"Agreements"} data={dao.agreements} />
       </VStack>
     </VStack>
