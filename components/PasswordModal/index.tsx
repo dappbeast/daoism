@@ -12,6 +12,7 @@ import {
   Input,
   ModalFooter,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import logIn from "../../utils/logIn";
@@ -19,12 +20,19 @@ import logIn from "../../utils/logIn";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  address: string | null;
+  address: string;
 }
 
 const PasswordModal = ({ isOpen, onClose, address }: ModalProps) => {
   const [password, setPassword] = useState("");
+
+  const { push } = useRouter();
   const [confirmPassword, setConfirmPassword] = useState("x");
+
+  const handleLogin = () => {
+    logIn(address, confirmPassword);
+    push("/create");
+  };
 
   return (
     <>
@@ -54,9 +62,9 @@ const PasswordModal = ({ isOpen, onClose, address }: ModalProps) => {
               colorScheme="blue"
               mr={3}
               isDisabled={password === confirmPassword ? false : true}
-              //onClick={() => logIn(address, confirmPassword)}
+              onClick={handleLogin}
             >
-              Login
+              Confirm Password
             </Button>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>

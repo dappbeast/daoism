@@ -23,12 +23,11 @@ import TablesTableRow from "../TableRow/TablesTableRow";
 
 import React, { useState } from "react";
 import { AgreementInfo } from "../../constants/types";
-//import RevealValuesModal from "../RevealValuesModal";
 import { useRouter } from "next/router";
 
 interface TableProps {
-  title: any;
-  captions?: any;
+  title: string;
+  captions?: string[];
   data: any;
 }
 
@@ -58,18 +57,6 @@ const AgreementTable = ({
           </Text>
 
           <HStack>
-            {/*<FormControl display="flex" alignItems="center">
-              <FormLabel
-                fontWeight={600}
-                color={"white"}
-                htmlFor="reveal-values"
-                mb="0"
-              >
-                Reveal Values
-              </FormLabel>
-              <Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />
-            </FormControl>*/}
-
             <Button
               px={8}
               py={4}
@@ -109,14 +96,13 @@ const AgreementTable = ({
                   baseSalary={agreement.salaryHash}
                   startDate={agreement.startDate}
                   endDate={agreement.endDate}
+                  agreementId={agreement.id}
                 />
               );
             })}
           </Tbody>
         </Table>
       </CardBody>
-
-      {/*<RevealValuesModal isOpen={isOpen} onClose={onClose} />*/}
     </Card>
   );
 };
