@@ -13,7 +13,7 @@ import React, { useState } from "react";
 interface TableRowProps {
   recipient: string;
   role: string;
-  baseSalary: string;
+  baseSalary: number | null;
   startDate: number;
   endDate: number | null;
   agreementId: number;
@@ -41,6 +41,9 @@ function TablesTableRow(props: TableRowProps) {
     </Text>
   );
 
+  const startDateString = new Date(startDate * 1000 ?? 0).toLocaleDateString();
+  const endDateString = new Date(endDate ?? 0).toLocaleDateString();
+
   return (
     <Tr borderBottom={"1px solid grey"} p={50}>
       <Td color={"white"} pl="0px" w={"200px"}>
@@ -62,7 +65,7 @@ function TablesTableRow(props: TableRowProps) {
       <Td pl="0px" w={"200px"}>
         <Flex direction="column">
           <Text fontSize="md" color={"white"} fontWeight="bold" minWidth="100%">
-            {showSalary ? baseSalary : bullets}
+            {baseSalary !== null ? baseSalary : bullets}
           </Text>
           <Text fontSize="sm" color="gray.400" fontWeight="normal">
             USDC Annually
@@ -72,13 +75,13 @@ function TablesTableRow(props: TableRowProps) {
 
       <Td pl="0px" w={"200px"}>
         <Text fontSize="md" color={"white"} fontWeight="bold" pb=".5rem">
-          {startDate}
+          {startDateString}
         </Text>
       </Td>
 
       <Td pl="0px" w={"200px"}>
         <Text fontSize="md" color={"white"} fontWeight="bold" pb=".5rem">
-          {endDate ? endDate : "-"}
+          {endDate ? endDateString : "-"}
         </Text>
       </Td>
 
