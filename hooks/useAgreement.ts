@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
-import AGREEMENTS from "../constants/agreements";
-import DAOS from "../constants/daos";
+import { DAOS } from "../constants/daos";
 import { Agreement } from "../constants/types";
+import useAgreementInfos from "./useAgreementInfos";
 
 export default function useAgreement(agreementId: number): {
   data: Agreement | null;
   isLoading: boolean;
   error: Error | null;
 } {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => setIsLoading(false);
-  }, [agreementId]);
+  const { data: agreementInfos, isLoading, error } = useAgreementInfos();
 
-  const agreementInfo = AGREEMENTS.find((a) => a.id === agreementId) ?? null;
+  const agreementInfo =
+    agreementInfos.find((a) => a.id === agreementId) ?? null;
   const daoInfo = agreementInfo
     ? DAOS.find((d) => d.address === agreementInfo.issuer)
     : null;
@@ -29,6 +22,6 @@ export default function useAgreement(agreementId: number): {
         : null
       : null,
     isLoading,
-    error: null,
+    error,
   };
 }

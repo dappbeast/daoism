@@ -7,14 +7,21 @@ export enum Role {
   Marketing2 = "MARKETING_2",
 }
 
+export enum AgreementState {
+  Empty,
+  Live,
+  Cancelled,
+}
+
 export type AgreementInfo = {
   id: number;
   issuer: string;
   recipient: string;
   role: Role;
+  state: AgreementState;
   startDate: number;
-  endDate: number;
-  hashedSalary: string;
+  endDate: number | null;
+  salaryHash: string;
 };
 
 export type Agreement = AgreementInfo & {

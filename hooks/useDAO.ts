@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import DAOS from "../constants/daos";
 import { DAO } from "../constants/types";
 import useDAOs from "./useDAOs";
 

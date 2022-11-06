@@ -1,4 +1,5 @@
 import { Flex, HStack, Heading, Text } from "@chakra-ui/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Nav = () => {
   const navBarElements = [
@@ -14,9 +15,6 @@ const Nav = () => {
     },
     {
       label: "Docs",
-    },
-    {
-      label: "Connect Wallet",
     },
   ];
   return (
@@ -36,12 +34,15 @@ const Nav = () => {
       >
         {navBarElements.map((element) => (
           <HStack key={element.label} spacing={3} alignItems={"center"}>
-            <Heading color={"white"} fontSize={"lg"}>
+            <Heading color={"white"} fontSize={"lg"} mx={4}>
               {element.label}
             </Heading>
             {/*{element.icon}*/}
           </HStack>
         ))}
+        <HStack spacing={3} alignItems={"center"}>
+          <ConnectButton showBalance={false} />
+        </HStack>
       </HStack>
     </Flex>
   );
