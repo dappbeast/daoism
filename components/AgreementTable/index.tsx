@@ -23,7 +23,7 @@ import TablesTableRow from "../TableRow/TablesTableRow";
 
 import React, { useState } from "react";
 import { AgreementInfo } from "../../constants/types";
-import RevealValuesModal from "../RevealValuesModal";
+//import RevealValuesModal from "../PasswordModal";
 
 interface TableProps {
   title: any;
@@ -65,7 +65,7 @@ const AgreementTable = ({
               >
                 Reveal Values
               </FormLabel>
-              <Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />
+              {/*<Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />*/}
             </FormControl>
 
             <Button px={8} py={4} colorScheme={"pink"} borderRadius={30}>
@@ -108,7 +108,7 @@ const AgreementTable = ({
         </Table>
       </CardBody>
 
-      <RevealValuesModal isOpen={isOpen} onClose={onClose} />
+      {/*<RevealValuesModal isOpen={isOpen} onClose={onClose} />*/}
     </Card>
   );
 };

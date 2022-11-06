@@ -1,11 +1,23 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import useDAO from "../../hooks/useDAO";
-import { Heading, HStack, Text, VStack, Flex, Button } from "@chakra-ui/react";
+import {
+  Heading,
+  HStack,
+  Text,
+  VStack,
+  Flex,
+  Button,
+  useDisclosure,
+} from "@chakra-ui/react";
 import AgreementTable from "../../components/AgreementTable";
+
+import PasswordModal from "../../components/PasswordModal";
+import { useState } from "react";
 
 export default function DAOPage() {
   const { push, query } = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const daoName = query.daoName?.toString() ?? "";
 
   const { data: dao, isLoading } = useDAO(daoName);
@@ -33,13 +45,19 @@ export default function DAOPage() {
         </Heading>
 
         <Button
-          onClick={() => {
-            push("/create");
-          }}
+          onClick={onOpen}
+          color={"white"}
+          bg={"none"}
+          border={"1px solid white"}
           borderRadius={30}
         >
           Create First Agreement
         </Button>
+        <PasswordModal
+          isOpen={isOpen}
+          onClose={onClose}
+          address={dao?.address}
+        />
       </VStack>
     );
   }
