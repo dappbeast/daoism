@@ -6,6 +6,7 @@ import {
   StackDivider,
   Heading,
   Box,
+  Button,
 } from "@chakra-ui/react";
 
 import { useAccount } from "wagmi";
@@ -13,6 +14,7 @@ import useAgreement from "../../hooks/useAgreement";
 
 export default function AgreementPage() {
   const { query } = useRouter();
+  const router = useRouter();
   const agreementId = parseInt(query.agreementId?.toString() ?? "");
 
   const { data: agreement, isLoading } = useAgreement(agreementId);
@@ -25,7 +27,7 @@ export default function AgreementPage() {
     return <p>Agreement does not exist</p>;
   }
 
-  //console.log();
+  console.log(agreement);
 
   return (
     //<div>
@@ -43,9 +45,8 @@ export default function AgreementPage() {
         </Heading>
 
         <VStack
-          mt={30}
-          mb={60}
           w={"1130px"}
+          mb={30}
           divider={<StackDivider borderColor="gray.200" />}
           spacing={20}
         >
@@ -64,7 +65,7 @@ export default function AgreementPage() {
             </VStack>
           </HStack>
 
-          <VStack w={"100%"} alignItems={"flex-start"}>
+          <VStack w={"100%"} alignItems={"flex-start"} spacing={6}>
             <Heading as={"h3"} color={"white"} fontSize={26}>
               Salary
             </Heading>
@@ -80,12 +81,42 @@ export default function AgreementPage() {
                 <Text color={"grey"} fontSize={16} fontWeight={700}>
                   Currency
                 </Text>
-                <Text color={"grey"}>{agreement.id}</Text>
+                <Text color={"grey"}>USDC</Text>
+              </VStack>
+            </HStack>
+          </VStack>
+
+          <VStack w={"100%"} alignItems={"flex-start"} spacing={6}>
+            <Heading as={"h3"} color={"white"} fontSize={26}>
+              Duration
+            </Heading>
+
+            <HStack w={"100%"}>
+              <VStack w={"50%"} alignItems={"flex-start"}>
+                <Text color={"grey"} fontSize={16} fontWeight={700}>
+                  Start Date
+                </Text>
+                <Text color={"grey"}>{agreement.startDate}</Text>
+              </VStack>
+              <VStack w={"50%"} alignItems={"flex-start"}>
+                <Text color={"grey"} fontSize={16} fontWeight={700}>
+                  End Date
+                </Text>
+                <Text color={"grey"}>
+                  {agreement.endDate === null ? "-" : agreement.endDate}
+                </Text>
               </VStack>
             </HStack>
           </VStack>
         </VStack>
       </Box>
+
+      <HStack spacing={6}>
+        <Button onClick={() => router.back()} borderRadius={30}>
+          Return to Dashboard
+        </Button>
+        <Button borderRadius={30}>Cancel Agreement</Button>
+      </HStack>
     </VStack>
   );
 }

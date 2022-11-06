@@ -36,7 +36,6 @@ export default function useAgreementInfos(): {
     localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
   );
 
-  //console.log(salaries);
   
   const data = ((rawData as Data[])?.map((data) => ({
     id: data.id.toNumber(),
