@@ -120,10 +120,17 @@ export default function AgreementPage() {
       </Box>
 
       <HStack spacing={6}>
-        <Button onClick={() => router.back()} borderRadius={30}>
+        <Button
+          bg={"#3F3F3F"}
+          color={"white"}
+          onClick={() => router.back()}
+          borderRadius={30}
+        >
           Return to Dashboard
         </Button>
-        <Button borderRadius={30}>Cancel Agreement</Button>
+        <Button bg={"#FF009B"} color={"white"} borderRadius={30}>
+          Cancel Agreement
+        </Button>
       </HStack>
     </VStack>
   );

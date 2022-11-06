@@ -72,11 +72,11 @@ const AgreementTable = ({
             <Button
               px={8}
               py={4}
-              colorScheme={"pink"}
+              bg={"#FF009B"}
               borderRadius={30}
               onClick={() => router.push("/create")}
             >
-              <Text fontWeight={600} fontSize={16}>
+              <Text color={"white"} fontWeight={600} fontSize={16}>
                 Create New
               </Text>
             </Button>
