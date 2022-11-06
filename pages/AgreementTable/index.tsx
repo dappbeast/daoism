@@ -38,6 +38,7 @@ const AgreementTable = ({
   data,
 }: TableProps) => {
   const textColor = useColorModeValue("gray.700", "white");
+
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }} w={"100%"}>
       <CardHeader p="6px 0px 22px 0px">
@@ -45,8 +46,9 @@ const AgreementTable = ({
           {title}
         </Text>
       </CardHeader>
+
       <CardBody>
-        <Table variant="unstyled" color={textColor}>
+        <Table variant="unstyled" color={textColor} w={"100%"}>
           <Thead>
             <Tr my=".8rem" pl="0px" color="gray.400">
               {captions.map((caption: string, idx: any) => {
@@ -58,15 +60,8 @@ const AgreementTable = ({
               })}
             </Tr>
           </Thead>
-          <Tbody>
-            {/*id: number;
-  issuer: string;
-  recipient: string;
-  role: Role;
-  startDate: number;
-  endDate: number;
-  hashedSalary: string;*/}
 
+          <Tbody>
             {data.map((agreement: AgreementInfo) => {
               return (
                 <TablesTableRow
