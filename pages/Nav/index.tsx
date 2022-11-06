@@ -21,7 +21,7 @@ const Nav = () => {
     <Flex
       alignItems={"center"}
       justifyContent={"space-between"}
-      w={"100%"}
+      w={"1130px"}
       py={8}
       px={40}
     >
