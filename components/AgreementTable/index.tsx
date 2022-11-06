@@ -31,13 +31,7 @@ interface TableProps {
   data: any;
 }
 
-const rowHeadings = [
-  "Contributor",
-  "Role",
-  "Base Salary",
-  "Start Date",
-  "End Date",
-];
+const rowHeadings = ["Contributor", "Role", "Salary", "Start Date", "End Date"];
 
 const AgreementTable = ({
   title,
