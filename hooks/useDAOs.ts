@@ -1,29 +1,20 @@
-import { useEffect, useState } from "react";
-import AGREEMENTS from "../constants/agreements";
-import DAOS from "../constants/daos";
+import { DAOS } from "../constants/daos";
 import { DAO } from "../constants/types";
+import useAgreementInfos from "./useAgreementInfos";
 
 export default function useDAOs(): {
   data: DAO[];
   isLoading: boolean;
   error: Error | null;
 } {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-    return () => setIsLoading(false);
-  }, []);
-
+  const { data: agreementInfos, isLoading, error } = useAgreementInfos();
   const data = DAOS.map((daoInfo) => ({
     ...daoInfo,
-    agreements: AGREEMENTS.filter((a) => a.issuer === daoInfo.address),
+    agreements: agreementInfos.filter((a) => a.issuer === daoInfo.address),
   }));
   return {
-    data: !isLoading ? data : [],
+    data,
     isLoading,
-    error: null,
+    error,
   };
 }
