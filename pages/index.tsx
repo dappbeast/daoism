@@ -24,7 +24,7 @@ export default function Onboarding() {
 
   useEffect(() => {
     if (walletDao) {
-      push("/dao/" + walletDao.name);
+      push("/dao/" + walletDao.name.toLowerCase());
     }
   }, [push, walletDao]);
 

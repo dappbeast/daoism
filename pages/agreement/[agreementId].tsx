@@ -123,7 +123,9 @@ export default function AgreementPage() {
         <Button
           bg={"#3F3F3F"}
           color={"white"}
-          onClick={() => router.back()}
+          onClick={() =>
+            router.push("/dao/" + agreement.dao.name.toLowerCase())
+          }
           borderRadius={30}
         >
           Return to Dashboard
