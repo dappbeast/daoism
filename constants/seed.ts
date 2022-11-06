@@ -30,7 +30,3 @@ export const SALARY_SEEDS: Record<number, number> = {
   29: 123_000,
   30: 115_000,
 };
-
-export const ADDRESS_SEEDS: Record<string, number> = {
-  "0xA421dB7E83b498ccA5AdC572Fbc434d4AB3B8f31": 123456,
-};

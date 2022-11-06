@@ -38,28 +38,6 @@ const wagmiClient = createClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
-  useEffect(() => {
-    const localStoragePassword = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_PASSWORD_MAPPING_KEY) ?? "{}"
-    );
-    localStorage.setItem(
-      LOCAL_STORAGE_PASSWORD_MAPPING_KEY,
-      JSON.stringify({
-        ...localStoragePassword,
-        ...ADDRESS_SEEDS,
-      })
-    );
-    const localStorageAgreement = JSON.parse(
-      localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
-    );
-    localStorage.setItem(
-      LOCAL_STORAGE_AGREEMENT_MAPPING_KEY,
-      JSON.stringify({
-        ...localStorageAgreement,
-        ...SALARY_SEEDS,
-      })
-    );
-  }, []);
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>

@@ -1,8 +1,9 @@
 import { BigNumber, ethers } from "ethers";
 import { getAddress } from "ethers/lib/utils";
-import { useContractRead } from "wagmi";
+import { useAccount, useContractRead } from "wagmi";
 import { WORK_AGREEMENT_ADDRESS } from "../constants/contracts";
 import { LOCAL_STORAGE_AGREEMENT_MAPPING_KEY } from "../constants/localStorage";
+import { SALARY_SEEDS } from "../constants/seed";
 import { AgreementInfo, AgreementState, Role } from "../constants/types";
 import WORK_AGREEMENT_ABI from "../constants/WorkAgreement.json";
 import coerce from "../utils/coerce";
@@ -36,7 +37,8 @@ export default function useAgreementInfos(): {
     localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
   );
 
-  
+  const { address } = useAccount();
+
   const data = ((rawData as Data[])?.map((data) => ({
     id: data.id.toNumber(),
     issuer: getAddress(data.issuer),
@@ -46,7 +48,12 @@ export default function useAgreementInfos(): {
     startDate: data.startDate.toNumber(),
     endDate: !data.endDate.isZero() ? data.endDate.toNumber() : null,
     salaryHash: data.salaryHash,
-    salary: salaries[data.id.toNumber()] ?? null,
+    salary:
+      address && address === getAddress(data.issuer)
+        ? salaries[data.id.toNumber()] ??
+          SALARY_SEEDS[data.id.toNumber()] ??
+          null
+        : null,
     isLoggedIn: !!salaries[data.id.toNumber()],
   })) ?? []) as AgreementInfo[];
 

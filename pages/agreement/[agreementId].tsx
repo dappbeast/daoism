@@ -83,7 +83,13 @@ export default function AgreementPage() {
                 <Text color={"grey"} fontSize={16} fontWeight={700}>
                   Amount
                 </Text>
-                <Text color={"white"}>{agreement.salary}</Text>
+                <Text color={"white"}>
+                  {agreement.salary ?? (
+                    <>
+                      &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;
+                    </>
+                  )}
+                </Text>
               </VStack>
               <VStack w={"50%"} alignItems={"flex-start"} spacing={1}>
                 <Text color={"grey"} fontSize={16} fontWeight={700}>
