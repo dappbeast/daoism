@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import { Flex, ChakraProvider } from "@chakra-ui/react";
-import { theme } from "./theme";
-import Nav from "./Nav";
+import { theme } from "../constants/theme";
+import Nav from "../components/Nav";
 
 import "@rainbow-me/rainbowkit/styles.css";
 
