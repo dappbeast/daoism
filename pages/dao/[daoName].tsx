@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useRouter } from "next/router";
 import useDAO from "../../hooks/useDAO";
 import {
@@ -9,6 +8,8 @@ import {
   Flex,
   Button,
   useDisclosure,
+  Box,
+  Image,
 } from "@chakra-ui/react";
 import AgreementTable from "../../components/AgreementTable";
 
@@ -53,7 +54,7 @@ export default function DAOPage() {
         alignItems={"flex-start"}
         spacing={5}
       >
-        {dao.agreements.length === 0 ? (
+        {dao.agreements.length !== 0 ? (
           <VStack
             mb={60}
             w={"1130px"}
@@ -80,6 +81,16 @@ export default function DAOPage() {
               onClose={onClose}
               address={dao.address}
             />
+
+            <Flex w={"100%"} justifyContent={"center"} alignItems={"center"}>
+              <Image
+                mt={12}
+                src={"/emptyState.svg"}
+                alt={"Empty State"}
+                width={"20%"}
+                height={"20%"}
+              />
+            </Flex>
           </VStack>
         ) : (
           <AgreementTable title={"Agreements"} data={dao.agreements} />
