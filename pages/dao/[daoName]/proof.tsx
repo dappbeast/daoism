@@ -22,13 +22,13 @@ export default function ProofPage() {
   const daoName = query.daoName?.toString() ?? "";
   const { data: dao } = useDAO(daoName);
 
-  const badgeColors = {
+  const badgeColors: Record<string, string> = {
     ENGINEER: "rgba(86, 106, 255, .35)",
     DESIGNER: "rgba(255, 0, 155, .35)",
     MARKETING: "rgba(127, 17, 224, .35)",
   };
 
-  const badgeTextColor = {
+  const badgeTextColor: Record<string, string> = {
     ENGINEER: "rgba(86, 106, 255, 1)",
     DESIGNER: "rgba(255, 0, 155, 1)",
     MARKETING: "rgba(127, 17, 224, 1)",
