@@ -195,7 +195,12 @@ const CreateAgreementForm = () => {
                 </Button>
               </HStack>
             ) : (
-              <Button onClick={handleAddEndDate} borderRadius={30}>
+              <Button
+                bg={"#3F3F3F"}
+                onClick={handleAddEndDate}
+                borderRadius={30}
+                color={"white"}
+              >
                 Add End Date
               </Button>
             )}
@@ -211,8 +216,7 @@ const CreateAgreementForm = () => {
       >
         <Button
           color={"white"}
-          bg={"none"}
-          border={"1px solid white"}
+          bg={"#3F3F3F"}
           borderRadius={30}
           onClick={() => router.back()}
         >
@@ -220,8 +224,7 @@ const CreateAgreementForm = () => {
         </Button>
         <Button
           color={"white"}
-          bg={"none"}
-          border={"1px solid white"}
+          bg={"#FF009B"}
           borderRadius={30}
           type="submit"
           isDisabled={isDisabled}

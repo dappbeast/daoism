@@ -7,6 +7,7 @@ import {
   Tr,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 interface TableRowProps {
@@ -15,11 +16,15 @@ interface TableRowProps {
   baseSalary: string;
   startDate: number;
   endDate: number | null;
+  agreementId: number;
 }
 
 function TablesTableRow(props: TableRowProps) {
   const [showSalary, setShowSalary] = useState(false);
-  const { recipient, role, baseSalary, startDate, endDate } = props;
+  const { recipient, role, baseSalary, startDate, endDate, agreementId } =
+    props;
+
+  const { push } = useRouter();
 
   // TODO: CHANGE STATUS COLORS FOR BADGES
   const bgStatus = useColorModeValue("gray.400", "#1a202c");
@@ -90,6 +95,7 @@ function TablesTableRow(props: TableRowProps) {
             color={"white"}
             fontWeight="bold"
             cursor="pointer"
+            onClick={() => push(`/agreement/${agreementId}`)}
           >
             View
           </Text>

@@ -35,6 +35,8 @@ export default function useAgreementInfos(): {
   const salaries = JSON.parse(
     localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
   );
+
+  
   const data = ((rawData as Data[])?.map((data) => ({
     id: data.id.toNumber(),
     issuer: getAddress(data.issuer),
