@@ -1,6 +1,7 @@
 import type { AppProps } from "next/app";
 import { Flex, ChakraProvider } from "@chakra-ui/react";
 import { theme } from "./theme";
+import Nav from "./Nav";
 
 import "@rainbow-me/rainbowkit/styles.css";
 
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
             justifyContent={"center"}
             alignItems={"center"}
           >
+            <Nav />
             <Component {...pageProps} />
           </Flex>
         </ChakraProvider>
