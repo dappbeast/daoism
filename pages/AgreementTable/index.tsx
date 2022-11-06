@@ -1,22 +1,29 @@
 // Chakra imports
 import {
+  Button,
+  HStack,
+  Switch,
   Table,
   Tbody,
   Text,
   Th,
   Thead,
   Tr,
+  FormControl,
+  FormLabel,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-// Custom components
 
+// Custom components
 import Card from "../Card/Card";
 import CardBody from "../Card/CardBody";
 import CardHeader from "../Card/CardHeader";
 import TablesTableRow from "../TableRow/TablesTableRow";
 
-import React from "react";
+import React, { useState } from "react";
 import { AgreementInfo } from "../../constants/types";
+import RevealValuesModal from "../RevealValuesModal";
 
 interface TableProps {
   title: any;
@@ -38,13 +45,36 @@ const AgreementTable = ({
   data,
 }: TableProps) => {
   const textColor = useColorModeValue("gray.700", "white");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }} w={"100%"}>
-      <CardHeader p="6px 0px 22px 0px">
-        <Text fontSize="xl" color={"white"} fontWeight="bold">
-          {title}
-        </Text>
+      <CardHeader p="6px 0px 16px 0px">
+        <HStack justifyContent={"space-between"}>
+          <Text fontSize="xl" color={"white"} fontWeight="bold">
+            {title}
+          </Text>
+
+          <HStack>
+            <FormControl display="flex" alignItems="center">
+              <FormLabel
+                fontWeight={600}
+                color={"white"}
+                htmlFor="reveal-values"
+                mb="0"
+              >
+                Reveal Values
+              </FormLabel>
+              <Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />
+            </FormControl>
+
+            <Button px={8} py={4} colorScheme={"pink"} borderRadius={30}>
+              <Text fontWeight={600} fontSize={16}>
+                Create New
+              </Text>
+            </Button>
+          </HStack>
+        </HStack>
       </CardHeader>
 
       <CardBody>
@@ -77,6 +107,8 @@ const AgreementTable = ({
           </Tbody>
         </Table>
       </CardBody>
+
+      <RevealValuesModal isOpen={isOpen} onClose={onClose} />
     </Card>
   );
 };

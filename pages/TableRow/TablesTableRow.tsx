@@ -78,7 +78,7 @@ function TablesTableRow(props: TableRowProps) {
         <Button
           px="14px"
           py="12px"
-          bg="green"
+          bg="pink"
           variant="no-hover"
           borderRadius={16}
         >
