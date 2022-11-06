@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import useDAO from "../../hooks/useDAO";
-import { Heading, HStack, Text, VStack, Flex } from "@chakra-ui/react";
+import { Heading, HStack, Text, VStack, Flex, Button } from "@chakra-ui/react";
 import AgreementTable from "../../components/AgreementTable";
 
 export default function DAOPage() {
-  const { query } = useRouter();
+  const { push, query } = useRouter();
   const daoName = query.daoName?.toString() ?? "";
 
   const { data: dao, isLoading } = useDAO(daoName);
@@ -15,7 +15,33 @@ export default function DAOPage() {
   }
 
   if (!dao) {
-    return <p>DAO does not exist</p>;
+    return (
+      <VStack
+        mt={20}
+        mb={60}
+        w={"1130px"}
+        justifyContent={"center"}
+        alignItems={"flex-start"}
+        spacing={14}
+      >
+        <Heading as={"h1"} fontSize={60} color={"white"}>
+          {daoName}
+        </Heading>
+
+        <Heading as={"h3"} fontSize={40} color={"white"}>
+          You have not set up any agreements yet.
+        </Heading>
+
+        <Button
+          onClick={() => {
+            push("/create");
+          }}
+          borderRadius={30}
+        >
+          Create First Agreement
+        </Button>
+      </VStack>
+    );
   }
 
   return (
