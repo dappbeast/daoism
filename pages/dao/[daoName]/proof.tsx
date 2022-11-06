@@ -22,6 +22,18 @@ export default function ProofPage() {
   const daoName = query.daoName?.toString() ?? "";
   const { data: dao } = useDAO(daoName);
 
+  const badgeColors = {
+    ENGINEER: "rgba(86, 106, 255, .35)",
+    DESIGNER: "rgba(255, 0, 155, .35)",
+    MARKETING: "rgba(127, 17, 224, .35)",
+  };
+
+  const badgeTextColor = {
+    ENGINEER: "rgba(86, 106, 255, 1)",
+    DESIGNER: "rgba(255, 0, 155, 1)",
+    MARKETING: "rgba(127, 17, 224, 1)",
+  };
+
   const agreementsByRole: Record<Role, AgreementInfo[]> = (
     dao?.agreements ?? []
   ).reduce(
@@ -38,6 +50,8 @@ export default function ProofPage() {
   if (!dao) {
     return null;
   }
+
+  //const badgeRole = role.substring(0, role.length - 2);
 
   return (
     <VStack
@@ -79,8 +93,8 @@ export default function ProofPage() {
                 <Tr key={role} borderBottom={"1px solid grey"} p={50}>
                   <Td pl="0px" w={"200px"}>
                     <Badge
-                      bg={"green.400"}
-                      color={"white"}
+                      bg={badgeColors[role.substring(0, role.length - 2)]}
+                      color={badgeTextColor[role.substring(0, role.length - 2)]}
                       fontSize="16px"
                       p="3px 10px"
                       borderRadius="8px"

@@ -30,6 +30,20 @@ function TablesTableRow(props: TableRowProps) {
   const bgStatus = useColorModeValue("gray.400", "#1a202c");
   const colorStatus = useColorModeValue("white", "gray.400");
 
+  const badgeColors = {
+    ENGINEER: "rgba(86, 106, 255, .35)",
+    DESIGNER: "rgba(255, 0, 155, .35)",
+    MARKETING: "rgba(127, 17, 224, .35)",
+  };
+
+  const badgeTextColor = {
+    ENGINEER: "rgba(86, 106, 255, 1)",
+    DESIGNER: "rgba(255, 0, 155, 1)",
+    MARKETING: "rgba(127, 17, 224, 1)",
+  };
+
+  const badgeRole = role.substring(0, role.length - 2);
+
   const recipientPrefix =
     recipient.substring(0, 6) +
     ".." +
@@ -52,11 +66,14 @@ function TablesTableRow(props: TableRowProps) {
 
       <Td pl="0px" w={"200px"}>
         <Badge
-          bg={role === "Online" ? "green.400" : bgStatus}
-          color={role === "Online" ? "white" : colorStatus}
+          //bg={role === "Online" ? "green.400" : bgStatus}
+          //color={role === "Online" ? "white" : colorStatus}
+          bg={badgeColors[badgeRole]}
           fontSize="16px"
-          p="3px 10px"
+          px={4}
+          py={4}
           borderRadius="8px"
+          color={badgeTextColor[badgeRole]}
         >
           {role}
         </Badge>
