@@ -9,7 +9,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import { useAccount } from "wagmi";
 import useAgreement from "../../hooks/useAgreement";
 
 export default function AgreementPage() {
@@ -32,14 +31,10 @@ export default function AgreementPage() {
     return <p>Agreement does not exist</p>;
   }
 
-  console.log(agreement.startDate);
-
   const startDate = new Date(
     agreement.startDate * 1000 ?? 0
   ).toLocaleDateString();
   const endDate = new Date(agreement.endDate ?? 0).toLocaleDateString();
-
-  console.log(agreement);
 
   return (
     <VStack mt={30} mb={60} w={"1130px"} spacing={16} alignItems={"flex-start"}>

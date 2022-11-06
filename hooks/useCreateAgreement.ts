@@ -38,7 +38,6 @@ export default function useCreateAgreement({
   const nextId = useMemo(() => {
     return agreements.sort((a, b) => b.id - a.id)[0].id + 1;
   }, [agreements]);
-  console.log({ nextId });
 
   const { address } = useAccount();
   const password = getPassword(address ?? "");
@@ -68,8 +67,6 @@ export default function useCreateAgreement({
       : [],
     enabled: isEnabled,
   });
-
-  console.log({ isEnabled, startDate, endDate, address, password });
 
   const { data, write } = useContractWrite(
     config as UseContractWriteConfig<readonly unknown[], string>

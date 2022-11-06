@@ -23,7 +23,6 @@ export default function ProofPage() {
   const daoName = query.daoName?.toString() ?? "";
   const { address } = useAccount();
   const { data: dao } = useDAO(daoName);
-  console.log({ daoName });
 
   const badgeColors: Record<string, string> = {
     ENGINEER: "rgba(86, 106, 255, .35)",

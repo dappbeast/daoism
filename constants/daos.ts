@@ -7,6 +7,6 @@ export const DAOS: DAOInfo[] = [
   },
   {
     name: "Aave",
-    address: "0x6bEa60C685C2e3eD4dc8441D0393b023f0ec0611",
+    address: "0x9a87BF61F4583f60ACe9b1B4AEf4846C7b1cb943",
   },
 ];
