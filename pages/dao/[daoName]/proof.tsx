@@ -49,7 +49,7 @@ export default function ProofPage() {
     >
       <HStack>
         <Heading as={"h1"} fontSize={60} color={"white"}>
-          {daoName}
+          {dao.name}
         </Heading>
       </HStack>
       <VStack

@@ -11,12 +11,12 @@ const switchColorScheme = "#06BEE1";
 const styles = {
   global: (props: StyleFunctionProps) => ({
     body: {
-      bg:"#000000",
+      bg: "#000000",
     },
   }),
 };
 
-export const contentWidth = '1032px';
+export const contentWidth = "1032px";
 
 export const space = {
   px: "1px",
@@ -152,5 +152,9 @@ export const theme = extendTheme({
   radii,
   space,
   components,
-  contentWidth
+  contentWidth,
+  fonts: {
+    heading: "'Sohne', sans-serif",
+    body: "'Inter var', sans-serif",
+  },
 });

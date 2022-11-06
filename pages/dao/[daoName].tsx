@@ -75,7 +75,7 @@ export default function DAOPage() {
         {/* TODO: ADD DAO LOGO */}
 
         <Heading as={"h1"} fontSize={60} color={"white"}>
-          {daoName}
+          {dao.name}
         </Heading>
       </HStack>
       <VStack
