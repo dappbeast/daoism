@@ -73,6 +73,18 @@ const AgreementTable = ({
             <Button
               px={8}
               py={4}
+              colorScheme={"gray"}
+              borderRadius={30}
+              onClick={() => router.push(router.asPath + "/proof")}
+            >
+              <Text fontWeight={600} fontSize={16}>
+                Generate Proof
+              </Text>
+            </Button>
+
+            <Button
+              px={8}
+              py={4}
               colorScheme={"pink"}
               borderRadius={30}
               onClick={() => router.push("/create")}
