@@ -12,11 +12,13 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useMemo } from "react";
 import useDAO from "../../../hooks/useDAO";
 import { MdCheck } from "react-icons/md";
 import { AgreementInfo, Role } from "../../../constants/types";
 import { useAccount } from "wagmi";
+import useSubmitProof from "../../../hooks/useSubmitProof";
+import { LOCAL_STORAGE_PROOF_KEY } from "../../../constants/localStorage";
 
 export default function ProofPage() {
   const { query } = useRouter();
@@ -48,6 +50,8 @@ export default function ProofPage() {
     }),
     {} as Record<Role, AgreementInfo[]>
   );
+
+  const { write, hash, isLoading, isSuccess } = useSubmitProof();
 
   if (!dao) {
     return null;
@@ -160,7 +164,7 @@ export default function ProofPage() {
                   </Td>
 
                   <Td pl="0px" w={"50px"}>
-                    {!isDaoOwner ? (
+                    {hash && !isLoading && isSuccess ? (
                       <Button
                         px="14px"
                         py="12px"
@@ -168,6 +172,12 @@ export default function ProofPage() {
                         variant="no-hover"
                         borderRadius={16}
                         leftIcon={<Icon as={MdCheck} color="white" />}
+                        onClick={() =>
+                          window.open(
+                            "https://goerli-optimism.etherscan.io/tx/" + hash,
+                            "_blank"
+                          )
+                        }
                       >
                         <Text
                           fontSize="md"
@@ -175,16 +185,17 @@ export default function ProofPage() {
                           fontWeight="bold"
                           cursor="pointer"
                         >
-                          See Proof
+                          View Proof
                         </Text>
                       </Button>
-                    ) : (
+                    ) : isDaoOwner ? (
                       <Button
                         px="14px"
                         py="12px"
                         bg={"#FF009B"}
                         variant="no-hover"
                         borderRadius={16}
+                        onClick={write}
                       >
                         <Text
                           fontSize="md"
@@ -195,7 +206,7 @@ export default function ProofPage() {
                           Generate Proof
                         </Text>
                       </Button>
-                    )}
+                    ) : null}
                   </Td>
                 </Tr>
               );

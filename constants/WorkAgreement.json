@@ -100,5 +100,58 @@
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "avgVerifierAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "averageSalaries",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "avgPolyA",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2][2]",
+        "name": "avgPolyB",
+        "type": "uint256[2][2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "avgPolyC",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "address",
+        "name": "hashVerifierAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "hashPolyA",
+        "type": "uint256[2]"
+      },
+      {
+        "internalType": "uint256[2][2]",
+        "name": "hashPolyB",
+        "type": "uint256[2][2]"
+      },
+      {
+        "internalType": "uint256[2]",
+        "name": "hashPolyC",
+        "type": "uint256[2]"
+      }
+    ],
+    "name": "submitAverageSalaryProof",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
   }
 ]
