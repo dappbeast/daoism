@@ -51,8 +51,6 @@ export default function ProofPage() {
     return null;
   }
 
-  //const badgeRole = role.substring(0, role.length - 2);
-
   return (
     <VStack
       mt={20}
