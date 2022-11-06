@@ -54,7 +54,7 @@ const PasswordModal = ({ isOpen, onClose, address }: ModalProps) => {
               colorScheme="blue"
               mr={3}
               isDisabled={password === confirmPassword ? false : true}
-              onClick={() => logIn(address, confirmPassword)}
+              //onClick={() => logIn(address, confirmPassword)}
             >
               Login
             </Button>
