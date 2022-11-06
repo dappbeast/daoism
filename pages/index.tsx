@@ -36,7 +36,11 @@ export default function Onboarding() {
       divider={<StackDivider borderColor="gray.200" />}
       spacing={20}
     >
-      <Image src={"/LP_hero.svg"} alt={"DAOism Empty State"} height={"50%"} />
+      <Image
+        src={"/hero_image.png"}
+        alt={"DAOism Empty State"}
+        height={"50%"}
+      />
       <HStack spacing={40}>
         <VStack w={"362px"} alignItems={"flex-start"} spacing={6}>
           <Heading as={"h3"} fontSize={30} color={"white"}>
