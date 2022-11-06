@@ -1,5 +1,6 @@
 import { DAOS } from "../constants/daos";
 import { Agreement } from "../constants/types";
+import checkSalary from "../utils/checkSalary";
 import useAgreementInfos from "./useAgreementInfos";
 
 export default function useAgreement(agreementId: number): {
