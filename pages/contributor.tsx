@@ -1,10 +1,12 @@
 import { useAccount } from "wagmi";
-import useAgreements from "../hooks/useContributorAgreements";
+import useContributorAgreements from "../hooks/useContributorAgreements";
 
 export default function ContributorPage() {
   const { address } = useAccount();
 
-  const { data: agreements, isLoading } = useAgreements(address);
+  const { data: agreements, isLoading } = useContributorAgreements(
+    address ?? ""
+  );
 
   if (isLoading) {
     return <p>Loading...</p>;

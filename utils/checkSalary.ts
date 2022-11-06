@@ -1,16 +1,11 @@
 import { ethers } from "ethers";
+import hashSalary from "./hashSalary";
 
 export default function checkSalary(
   salary: number,
   secret: string | number,
   salaryHash: ethers.utils.BytesLike
 ): boolean {
-  const salaryBn = ethers.utils.parseEther(salary.toString());
-  const computedHash = ethers.utils.sha256(
-    ethers.utils.defaultAbiCoder.encode(
-      [typeof secret === "number" ? "uint" : "string", "uint"],
-      [secret, salaryBn]
-    )
-  );
+  const computedHash = hashSalary(salary, secret);
   return computedHash === salaryHash;
 }

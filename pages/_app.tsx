@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { Flex, ChakraProvider } from "@chakra-ui/react";
-import { theme } from "./theme";
+import { theme } from "../constants/theme";
 import Nav from "../components/Nav";
 import "./App.scss";
 
@@ -10,6 +10,7 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
+import NoSSR from "../components/NoSSR";
 
 const { chains, provider } = configureChains(
   [chain.optimismGoerli],
@@ -41,7 +42,9 @@ export default function App({ Component, pageProps }: AppProps) {
             alignItems={"center"}
           >
             <Nav />
-            <Component {...pageProps} />
+            <NoSSR>
+              <Component {...pageProps} />
+            </NoSSR>
           </Flex>
         </ChakraProvider>
       </RainbowKitProvider>
