@@ -7,21 +7,14 @@ import {
   Input,
   Button,
   Select,
-  InputGroup,
-  InputLeftElement,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { useRouter } from "next/router";
 
 import { FiTrash } from "react-icons/fi";
-import useCreateAgreement from "../../hooks/useCreateAgreement";
-import coerce from "../../utils/coerce";
-import { Role } from "../../constants/types";
+import useCreateAgreement from "../hooks/useCreateAgreement";
+import { Role } from "../constants/types";
 
 const currencies = [
   { name: "USDC", icon: null, id: 1 },
