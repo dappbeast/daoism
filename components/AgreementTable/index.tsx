@@ -24,6 +24,7 @@ import TablesTableRow from "../TableRow/TablesTableRow";
 import React, { useState } from "react";
 import { AgreementInfo } from "../../constants/types";
 import RevealValuesModal from "../RevealValuesModal";
+import { useRouter } from "next/router";
 
 interface TableProps {
   title: any;
@@ -46,6 +47,7 @@ const AgreementTable = ({
 }: TableProps) => {
   const textColor = useColorModeValue("gray.700", "white");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
 
   return (
     <Card overflowX={{ sm: "scroll", xl: "hidden" }} w={"100%"}>
@@ -68,7 +70,13 @@ const AgreementTable = ({
               <Switch id="reveal-values" onChange={onOpen} isChecked={isOpen} />
             </FormControl>
 
-            <Button px={8} py={4} colorScheme={"pink"} borderRadius={30}>
+            <Button
+              px={8}
+              py={4}
+              colorScheme={"pink"}
+              borderRadius={30}
+              onClick={() => router.push("/create")}
+            >
               <Text fontWeight={600} fontSize={16}>
                 Create New
               </Text>

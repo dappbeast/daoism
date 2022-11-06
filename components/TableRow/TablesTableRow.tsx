@@ -25,7 +25,10 @@ function TablesTableRow(props: TableRowProps) {
   const bgStatus = useColorModeValue("gray.400", "#1a202c");
   const colorStatus = useColorModeValue("white", "gray.400");
 
-  const recipientPrefix = recipient.substring(0, 3);
+  const recipientPrefix =
+    recipient.substring(0, 6) +
+    ".." +
+    recipient.substring(recipient.length - 4);
 
   const bullets = (
     <Text fontSize={20} mr={2}>
