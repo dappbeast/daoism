@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useDAO from "../../hooks/useDAO";
 import { Heading, HStack, Text, VStack, Flex } from "@chakra-ui/react";
+import AgreementTable from "../AgreementTable";
 
 export default function DAOPage() {
   const { query } = useRouter();
@@ -29,19 +30,32 @@ export default function DAOPage() {
     //    </Text>
     //  ))}
     //</div>
-    <VStack mt={20}>
+    <VStack
+      mt={20}
+      w={"1130px"}
+      justifyContent={"center"}
+      alignItems={"flex-start"}
+      spacing={10}
+    >
       <HStack>
         {/*<Image src={dao.logoUri} alt="Logo" width={120} height={120} />*/}
 
-        <Heading as={"h1"} size={"xl"} color={"white"}>
+        <Heading as={"h1"} fontSize={60} color={"white"}>
           {daoName}
         </Heading>
       </HStack>
-      <Flex>
-        <Heading as={"h3"} size={"md"} color={"whi"}>
+      <VStack
+        w={"100%"}
+        justifyContent={"center"}
+        alignItems={"flex-start"}
+        spacing={5}
+      >
+        {/*<Heading as={"h3"} size={"md"} color={"white"}>
           Agreements
-        </Heading>
-      </Flex>
+        </Heading>*/}
+
+        <AgreementTable title={"Agreements"} data={dao.agreements} />
+      </VStack>
     </VStack>
   );
 }
