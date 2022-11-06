@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useDAO from "../../hooks/useDAO";
 import { Heading, HStack, Text, VStack, Flex } from "@chakra-ui/react";
-import AgreementTable from "../AgreementTable";
+import AgreementTable from "../../components/AgreementTable";
 
 export default function DAOPage() {
   const { query } = useRouter();
