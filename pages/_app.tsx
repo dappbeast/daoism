@@ -9,6 +9,7 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
+import NoSSR from "../components/NoSSR";
 
 const { chains, provider } = configureChains(
   [chain.optimismGoerli],
@@ -40,7 +41,9 @@ export default function App({ Component, pageProps }: AppProps) {
             alignItems={"center"}
           >
             <Nav />
-            <Component {...pageProps} />
+            <NoSSR>
+              <Component {...pageProps} />
+            </NoSSR>
           </Flex>
         </ChakraProvider>
       </RainbowKitProvider>

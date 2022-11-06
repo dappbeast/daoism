@@ -2,9 +2,9 @@ import { BigNumber, ethers } from "ethers";
 import { getAddress } from "ethers/lib/utils";
 import { useContractRead } from "wagmi";
 import { WORK_AGREEMENT_ADDRESS } from "../constants/contracts";
+import { LOCAL_STORAGE_AGREEMENT_MAPPING_KEY } from "../constants/localStorage";
 import { AgreementInfo, AgreementState, Role } from "../constants/types";
 import WORK_AGREEMENT_ABI from "../constants/WorkAgreement.json";
-import checkSalary from "../utils/checkSalary";
 import coerce from "../utils/coerce";
 
 type Data = {
@@ -17,10 +17,6 @@ type Data = {
   endDate: BigNumber;
   salaryHash: ethers.utils.BytesLike;
 };
-
-function isServer() {
-  return !(typeof window != "undefined" && window.document);
-}
 
 export default function useAgreementInfos(): {
   data: AgreementInfo[];
@@ -35,8 +31,10 @@ export default function useAgreementInfos(): {
     address: WORK_AGREEMENT_ADDRESS,
     abi: WORK_AGREEMENT_ABI,
     functionName: "getAgreements",
-    enabled: !isServer(),
   });
+  const salaries = JSON.parse(
+    localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
+  );
   const data = ((rawData as Data[])?.map((data) => ({
     id: data.id.toNumber(),
     issuer: getAddress(data.issuer),
@@ -46,6 +44,8 @@ export default function useAgreementInfos(): {
     startDate: data.startDate.toNumber(),
     endDate: !data.endDate.isZero() ? data.endDate.toNumber() : null,
     salaryHash: data.salaryHash,
+    salary: salaries[data.id.toNumber()] ?? null,
+    isLoggedIn: !!salaries[data.id.toNumber()],
   })) ?? []) as AgreementInfo[];
 
   return {

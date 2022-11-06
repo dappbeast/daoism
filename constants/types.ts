@@ -22,6 +22,8 @@ export type AgreementInfo = {
   startDate: number;
   endDate: number | null;
   salaryHash: string;
+  salary: number | null;
+  isLoggedIn: boolean;
 };
 
 export type Agreement = AgreementInfo & {
