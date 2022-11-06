@@ -1,4 +1,4 @@
-import { BigNumber } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { getAddress } from "ethers/lib/utils";
 import { useContractRead } from "wagmi";
 import { WORK_AGREEMENT_ADDRESS } from "../constants/contracts";
@@ -10,11 +10,11 @@ type Data = {
   id: BigNumber;
   issuer: string;
   recipient: string;
-  role: string;
+  role: ethers.utils.BytesLike;
   state: number;
   startDate: BigNumber;
   endDate: BigNumber;
-  salaryHash: string;
+  salaryHash: ethers.utils.BytesLike;
 };
 
 function isServer() {
@@ -40,12 +40,14 @@ export default function useAgreementInfos(): {
     id: data.id.toNumber(),
     issuer: getAddress(data.issuer),
     recipient: getAddress(data.recipient),
-    role: coerce(Role, data.role),
+    role: coerce(Role, ethers.utils.parseBytes32String(data.role)),
     state: coerce(AgreementState, data.state),
     startDate: data.startDate.toNumber(),
     endDate: !data.endDate.isZero() ? data.endDate.toNumber() : null,
     salaryHash: data.salaryHash,
   })) ?? []) as AgreementInfo[];
+
+  console.log(data);
   return {
     data,
     isLoading,
