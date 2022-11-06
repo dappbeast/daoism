@@ -16,11 +16,14 @@ import React from "react";
 import useDAO from "../../../hooks/useDAO";
 import { MdCheck } from "react-icons/md";
 import { AgreementInfo, Role } from "../../../constants/types";
+import { useAccount } from "wagmi";
 
 export default function ProofPage() {
   const { query } = useRouter();
   const daoName = query.daoName?.toString() ?? "";
+  const { address } = useAccount();
   const { data: dao } = useDAO(daoName);
+  console.log({ daoName });
 
   const badgeColors: Record<string, string> = {
     ENGINEER: "rgba(86, 106, 255, .35)",
@@ -50,6 +53,8 @@ export default function ProofPage() {
   if (!dao) {
     return null;
   }
+
+  const isDaoOwner = dao?.address === address;
 
   return (
     <VStack
@@ -82,6 +87,9 @@ export default function ProofPage() {
               </Th>
               <Th color="gray.400" px={0}>
                 Avg. Duration
+              </Th>
+              <Th color="gray.400" px={0}>
+                Proof
               </Th>
             </Tr>
           </Thead>
@@ -153,23 +161,42 @@ export default function ProofPage() {
                   </Td>
 
                   <Td pl="0px" w={"50px"}>
-                    <Button
-                      px="14px"
-                      py="12px"
-                      bg="teal"
-                      variant="no-hover"
-                      borderRadius={16}
-                    >
-                      <Icon as={MdCheck} color="white" mr={1} />
-                      <Text
-                        fontSize="md"
-                        color={"white"}
-                        fontWeight="bold"
-                        cursor="pointer"
+                    {!isDaoOwner ? (
+                      <Button
+                        px="14px"
+                        py="12px"
+                        bg="teal"
+                        variant="no-hover"
+                        borderRadius={16}
+                        leftIcon={<Icon as={MdCheck} color="white" />}
                       >
-                        See Proof
-                      </Text>
-                    </Button>
+                        <Text
+                          fontSize="md"
+                          color={"white"}
+                          fontWeight="bold"
+                          cursor="pointer"
+                        >
+                          See Proof
+                        </Text>
+                      </Button>
+                    ) : (
+                      <Button
+                        px="14px"
+                        py="12px"
+                        bg={"#FF009B"}
+                        variant="no-hover"
+                        borderRadius={16}
+                      >
+                        <Text
+                          fontSize="md"
+                          color={"white"}
+                          fontWeight="bold"
+                          cursor="pointer"
+                        >
+                          Generate Proof
+                        </Text>
+                      </Button>
+                    )}
                   </Td>
                 </Tr>
               );
