@@ -32,7 +32,6 @@ export type Agreement = AgreementInfo & {
 
 export type DAOInfo = {
   name: string;
-  logoUri: string;
   address: string;
 };
 
