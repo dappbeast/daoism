@@ -77,6 +77,11 @@ const CreateAgreementForm = () => {
               Contributor Wallet Address
             </FormLabel>
             <Input
+              sx={{
+                background:
+                  "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+              }}
+              border={"none"}
               borderRadius={30}
               color={"white"}
               placeholder="0x123..456"
@@ -91,6 +96,11 @@ const CreateAgreementForm = () => {
               Role
             </FormLabel>
             <Select
+              sx={{
+                background:
+                  "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+              }}
+              border={"none"}
               id="currencies"
               size="md"
               color={"white"}
@@ -123,6 +133,11 @@ const CreateAgreementForm = () => {
                 Amount
               </FormLabel>
               <Input
+                sx={{
+                  background:
+                    "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+                }}
+                border={"none"}
                 color={"white"}
                 borderRadius={30}
                 mt={0}
@@ -138,6 +153,11 @@ const CreateAgreementForm = () => {
                 Currency
               </FormLabel>
               <Select
+                sx={{
+                  background:
+                    "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+                }}
+                border={"none"}
                 id="currencies"
                 size="md"
                 color={"white"}
@@ -163,6 +183,11 @@ const CreateAgreementForm = () => {
                 Start Date
               </FormLabel>
               <Input
+                sx={{
+                  background:
+                    "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+                }}
+                border={"none"}
                 color={"white"}
                 borderRadius={30}
                 mt={0}
@@ -180,6 +205,11 @@ const CreateAgreementForm = () => {
                     End Date
                   </FormLabel>
                   <Input
+                    sx={{
+                      background:
+                        "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+                    }}
+                    border={"none"}
                     color={"white"}
                     borderRadius={30}
                     mt={0}
