@@ -4,8 +4,11 @@ export default function logIn(address: string, password: string) {
   const localStoragePassword = JSON.parse(
     localStorage.getItem(LOCAL_STORAGE_PASSWORD_MAPPING_KEY) ?? ""
   );
-  localStorage.setItem(LOCAL_STORAGE_PASSWORD_MAPPING_KEY, {
-    ...localStoragePassword,
-    [address]: password,
-  });
+  localStorage.setItem(
+    LOCAL_STORAGE_PASSWORD_MAPPING_KEY,
+    JSON.stringify({
+      ...localStoragePassword,
+      [address]: password,
+    })
+  );
 }
