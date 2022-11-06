@@ -38,6 +38,7 @@ export default function useCreateAgreement({
   const nextId = useMemo(() => {
     return agreements.sort((a, b) => b.id - a.id)[0].id + 1;
   }, [agreements]);
+  console.log({ nextId });
 
   const { address } = useAccount();
   const password = getPassword(address ?? "");
@@ -46,9 +47,9 @@ export default function useCreateAgreement({
     !isNaN(startDate) &&
     (!endDate || !isNaN(endDate)) &&
     startDate > 0 &&
-    address &&
-    password &&
-    salary;
+    !!address &&
+    !!password &&
+    !!salary;
 
   const { config } = usePrepareContractWrite({
     address: WORK_AGREEMENT_ADDRESS,
@@ -68,6 +69,8 @@ export default function useCreateAgreement({
     enabled: isEnabled,
   });
 
+  console.log({ isEnabled, startDate, endDate, address, password });
+
   const { data, write } = useContractWrite(
     config as UseContractWriteConfig<readonly unknown[], string>
   );
@@ -81,10 +84,13 @@ export default function useCreateAgreement({
       const localStorageAgreement = JSON.parse(
         localStorage.getItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY) ?? "{}"
       );
-      localStorage.setItem(LOCAL_STORAGE_AGREEMENT_MAPPING_KEY, {
-        ...localStorageAgreement,
-        [nextId]: salary,
-      });
+      localStorage.setItem(
+        LOCAL_STORAGE_AGREEMENT_MAPPING_KEY,
+        JSON.stringify({
+          ...localStorageAgreement,
+          [nextId]: salary,
+        })
+      );
     }
   }, [isSuccess, nextId, salary]);
 

@@ -8,7 +8,7 @@ import {
   Button,
   Select,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useRouter } from "next/router";
 
@@ -40,12 +40,19 @@ const CreateAgreementForm = () => {
   const startDateNum = new Date(startDate).getTime() / 1000;
   const endDateNum = endDate ? new Date(endDate).getTime() / 1000 : null;
 
-  const { write, isDisabled } = useCreateAgreement({
-    startDate: startDateNum,
-    endDate: endDateNum,
-    role: role,
-    salary: salary,
-  });
+  const { write, isDisabled, isLoading, isSuccess, agreementId } =
+    useCreateAgreement({
+      startDate: startDateNum,
+      endDate: endDateNum,
+      role: role,
+      salary: salary,
+    });
+
+  useEffect(() => {
+    if (!isLoading && isSuccess && agreementId) {
+      router.push("/agreement/" + agreementId);
+    }
+  }, [isLoading, isSuccess, agreementId, router]);
 
   return (
     <VStack
@@ -218,6 +225,7 @@ const CreateAgreementForm = () => {
           borderRadius={30}
           type="submit"
           isDisabled={isDisabled}
+          onClick={() => write()}
         >
           Send to contributor
         </Button>
