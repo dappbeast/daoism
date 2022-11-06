@@ -23,7 +23,7 @@ const Nav = () => {
       justifyContent={"space-between"}
       w={"1130px"}
       py={8}
-      px={40}
+      //px={40}
     >
       <Text color={"white"}>Logo Placeholder</Text>
       <HStack

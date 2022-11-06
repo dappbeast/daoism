@@ -19,17 +19,6 @@ export default function DAOPage() {
   }
 
   return (
-    //<div>
-    //  <h1>{dao.name}</h1>
-    //  <Image src={dao.logoUri} alt="Logo" width={120} height={120} />
-    //  <h2>Agreements</h2>
-    //  {dao.agreements.map((agreement) => (
-    //    <Text color={"white"} key={agreement.id}>
-    //      ID #{agreement.id} - {agreement.role} - {dao.name} -{" "}
-    //      {agreement.recipient}
-    //    </Text>
-    //  ))}
-    //</div>
     <VStack
       mt={20}
       mb={60}
@@ -39,7 +28,7 @@ export default function DAOPage() {
       spacing={10}
     >
       <HStack>
-        {/*<Image src={dao.logoUri} alt="Logo" width={120} height={120} />*/}
+        {/* TODO: ADD DAO LOGO */}
 
         <Heading as={"h1"} fontSize={60} color={"white"}>
           {daoName}
