@@ -131,8 +131,6 @@ const layerStyles = {
   },
 };
 
-const TEXT_MARGIN = "0 0 1em 0 !important";
-
 const radii = {
   none: "0",
   sx: "1px",
