@@ -1,4 +1,4 @@
-export const SALARY_SEEDS = {
+export const SALARY_SEEDS: Record<number, number> = {
   1: 148_250,
   2: 115_000,
   3: 138_000,
@@ -31,6 +31,6 @@ export const SALARY_SEEDS = {
   30: 115_000,
 };
 
-export const ADDRESS_SEEDS = {
-  "0xA421dB7E83b498ccA5AdC572Fbc434d4AB3B8f31": "apples",
+export const ADDRESS_SEEDS: Record<string, number> = {
+  "0xA421dB7E83b498ccA5AdC572Fbc434d4AB3B8f31": 123456,
 };

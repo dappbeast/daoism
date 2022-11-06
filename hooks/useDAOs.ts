@@ -10,7 +10,6 @@ export default function useDAOs(): {
   const { data: agreementInfos, isLoading, error } = useAgreementInfos();
   const data = DAOS.map((daoInfo) => ({
     ...daoInfo,
-    //agreements: [],
     agreements: agreementInfos.filter((a) => a.issuer === daoInfo.address),
   }));
   return {
