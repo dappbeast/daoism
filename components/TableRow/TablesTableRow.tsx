@@ -87,11 +87,14 @@ function TablesTableRow(props: TableRowProps) {
 
       <Td pl="0px" w={"50px"}>
         <Button
-          px="14px"
-          py="12px"
-          bg="pink"
+          px={6}
+          py={6}
           variant="no-hover"
-          borderRadius={16}
+          borderRadius={30}
+          sx={{
+            background:
+              "linear-gradient(to right, rgba(26, 26, 26, 1), rgba(26, 26, 26, .4));",
+          }}
         >
           <Text
             fontSize="md"
