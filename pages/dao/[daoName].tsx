@@ -54,7 +54,7 @@ export default function DAOPage() {
         alignItems={"flex-start"}
         spacing={5}
       >
-        {dao.agreements.length !== 0 ? (
+        {dao.agreements.length === 0 ? (
           <VStack
             mb={60}
             w={"1130px"}
