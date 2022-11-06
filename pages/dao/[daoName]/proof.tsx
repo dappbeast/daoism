@@ -22,17 +22,18 @@ export default function ProofPage() {
   const daoName = query.daoName?.toString() ?? "";
   const { data: dao } = useDAO(daoName);
 
-  const agreementsByRole: Record<Role, AgreementInfo[]> =
-    dao?.agreements.reduce(
-      (agreementsByRole, agreement) => ({
-        ...agreementsByRole,
-        [agreement.role]: [
-          ...(agreementsByRole[agreement.role] ?? []),
-          agreement,
-        ],
-      }),
-      {} as Record<Role, AgreementInfo[]>
-    );
+  const agreementsByRole: Record<Role, AgreementInfo[]> = (
+    dao?.agreements ?? []
+  ).reduce(
+    (agreementsByRole, agreement) => ({
+      ...agreementsByRole,
+      [agreement.role]: [
+        ...(agreementsByRole[agreement.role] ?? []),
+        agreement,
+      ],
+    }),
+    {} as Record<Role, AgreementInfo[]>
+  );
 
   if (!dao) {
     return null;
