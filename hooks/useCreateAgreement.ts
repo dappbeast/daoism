@@ -40,24 +40,31 @@ export default function useCreateAgreement({
   }, [agreements]);
 
   const { address } = useAccount();
-
   const password = getPassword(address ?? "");
 
-  const isEnabled = startDate > 0 && address && password && salary;
+  const isEnabled =
+    !isNaN(startDate) &&
+    (!endDate || !isNaN(endDate)) &&
+    startDate > 0 &&
+    address &&
+    password &&
+    salary;
 
   const { config } = usePrepareContractWrite({
     address: WORK_AGREEMENT_ADDRESS,
     abi: WORK_AGREEMENT_ABI,
     functionName: "issueAgreement",
-    args: [
-      [
-        address,
-        BigNumber.from(startDate),
-        BigNumber.from(endDate ?? 0),
-        ethers.utils.formatBytes32String(role),
-        hashSalary(salary, password),
-      ],
-    ],
+    args: isEnabled
+      ? [
+          [
+            address,
+            BigNumber.from(startDate),
+            BigNumber.from(endDate ?? 0),
+            ethers.utils.formatBytes32String(role),
+            hashSalary(salary, password),
+          ],
+        ]
+      : [],
     enabled: isEnabled,
   });
 
