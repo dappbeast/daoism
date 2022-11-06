@@ -68,7 +68,7 @@ const AgreementTable = ({
               py={4}
               bg={"#FF009B"}
               borderRadius={30}
-              onClick={() => router.push("/create")}
+              onClick={() => router.push(router.asPath + "/create")}
             >
               <Text color={"white"} fontWeight={600} fontSize={16}>
                 Create New

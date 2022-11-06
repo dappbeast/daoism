@@ -14,16 +14,18 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { DAO } from "../../constants/types";
 
 import logIn from "../../utils/logIn";
 
 interface ModalProps {
+  dao: DAO;
   isOpen: boolean;
   onClose: () => void;
   address: string;
 }
 
-const PasswordModal = ({ isOpen, onClose, address }: ModalProps) => {
+const PasswordModal = ({ dao, isOpen, onClose, address }: ModalProps) => {
   const [password, setPassword] = useState("");
 
   const { push } = useRouter();
@@ -31,7 +33,7 @@ const PasswordModal = ({ isOpen, onClose, address }: ModalProps) => {
 
   const handleLogin = () => {
     logIn(address, confirmPassword);
-    push("/create");
+    push(dao.name + "/create");
   };
 
   return (

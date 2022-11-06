@@ -13,8 +13,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { FiTrash } from "react-icons/fi";
-import useCreateAgreement from "../hooks/useCreateAgreement";
-import { Role } from "../constants/types";
+import useCreateAgreement from "../../../hooks/useCreateAgreement";
+import { Role } from "../../../constants/types";
+import useDAO from "../../../hooks/useDAO";
 
 const currencies = [
   { name: "USDC", icon: null, id: 1 },
@@ -24,6 +25,8 @@ const currencies = [
 
 const CreateAgreementForm = () => {
   const router = useRouter();
+  const daoName = router.query.daoName?.toString() ?? "";
+  const { data: dao } = useDAO(daoName);
 
   const [contributorAddress, setContributorAddress] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -248,7 +251,7 @@ const CreateAgreementForm = () => {
           color={"white"}
           bg={"#3F3F3F"}
           borderRadius={30}
-          onClick={() => router.back()}
+          onClick={() => router.push("/dao/" + (dao?.name ?? ""))}
         >
           Go back
         </Button>

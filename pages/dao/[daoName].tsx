@@ -77,6 +77,7 @@ export default function DAOPage() {
               Create First Agreement
             </Button>
             <PasswordModal
+              dao={dao}
               isOpen={isOpen}
               onClose={onClose}
               address={dao.address}
