@@ -73,7 +73,7 @@ const AgreementTable = ({
                   key={agreement.id}
                   recipient={agreement.recipient}
                   role={agreement.role}
-                  baseSalary={agreement.hashedSalary}
+                  baseSalary={agreement.salaryHash}
                   startDate={agreement.startDate}
                   endDate={agreement.endDate}
                 />
